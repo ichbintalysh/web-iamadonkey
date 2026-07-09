@@ -12,46 +12,50 @@ body{
 
 body{
     overflow:hidden;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     background:#000;
     color:#fff;
 }
 
-/* ===========================
+/* =========================
    BACKGROUND
-=========================== */
+========================= */
 
 #background{
+
     position:fixed;
     inset:0;
-    z-index:-2;
 
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
 
-    opacity:1;
-
-    transition:
-        opacity .7s ease,
-        transform 3.5s linear,
-        filter .7s ease;
-
-    filter:brightness(.35) blur(2px);
+    filter:brightness(.32) blur(2px);
 
     transform:scale(1.08);
+
+    transition:
+        opacity .8s ease,
+        transform 4s linear;
+
+    z-index:-2;
+
 }
 
 #background::after{
+
     content:"";
+
     position:absolute;
     inset:0;
+
     background:rgba(0,0,0,.45);
+
 }
 
-/* ===========================
+/* =========================
    CONTENT
-=========================== */
+========================= */
 
 .container{
 
@@ -66,21 +70,20 @@ body{
 
     text-align:center;
 
-    padding:20px;
 }
 
 #title{
 
-    font-size:82px;
-    font-weight:900;
+    font-size:78px;
 
     text-shadow:
-        0 0 18px rgba(255,255,255,.75),
-        0 0 45px rgba(255,255,255,.25);
+        0 0 15px rgba(255,255,255,.6),
+        0 0 35px rgba(255,255,255,.2);
 
     animation:float 3s ease-in-out infinite;
 
-    margin-bottom:55px;
+    margin-bottom:45px;
+
 }
 
 @keyframes float{
@@ -95,7 +98,7 @@ body{
 
 }
 
-.question{
+#question{
 
     font-size:48px;
 
@@ -103,15 +106,11 @@ body{
 
 }
 
-/* ===========================
-   BUTTONS
-=========================== */
-
 .buttons{
 
     display:flex;
 
-    gap:28px;
+    gap:24px;
 
 }
 
@@ -119,9 +118,9 @@ button{
 
     border:none;
 
-    cursor:pointer;
-
     border-radius:15px;
+
+    cursor:pointer;
 
     padding:16px 38px;
 
@@ -130,13 +129,14 @@ button{
     color:white;
 
     transition:.25s;
+
 }
 
 #yesBtn{
 
     background:#2ecc71;
 
-    box-shadow:0 0 20px rgba(46,204,113,.45);
+    box-shadow:0 0 20px rgba(46,204,113,.4);
 
 }
 
@@ -152,50 +152,50 @@ button{
 
 }
 
-/* ===========================
+/* =========================
    EASTER EGG
-=========================== */
+========================= */
 
 #secret{
 
     position:fixed;
 
-    right:10px;
-    bottom:8px;
+    right:8px;
+    bottom:6px;
 
     font-size:8px;
 
     color:white;
 
-    opacity:.03;
+    opacity:.02;
 
     user-select:none;
 
-    transition:.35s;
-
-    letter-spacing:.4px;
+    transition:.25s;
 
 }
 
 #secret:hover{
 
-    opacity:.45;
+    opacity:.35;
 
 }
 
-/* ===========================
+/* =========================
    MOBILE
-=========================== */
+========================= */
 
 @media(max-width:768px){
 
     #title{
 
-        font-size:48px;
+        font-size:44px;
+
+        padding:0 20px;
 
     }
 
-    .question{
+    #question{
 
         font-size:30px;
 
@@ -205,15 +205,13 @@ button{
 
         flex-direction:column;
 
-        gap:16px;
-
     }
 
     button{
 
-        font-size:20px;
-
         width:170px;
+
+        font-size:20px;
 
     }
 
