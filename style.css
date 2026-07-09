@@ -14,7 +14,7 @@ body{
     overflow:hidden;
     font-family:Arial,Helvetica,sans-serif;
     background:#000;
-    color:white;
+    color:#fff;
 }
 
 /* ===========================
@@ -22,40 +22,31 @@ body{
 =========================== */
 
 #background{
-
     position:fixed;
     inset:0;
-
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-
-    transition:
-        background-image 1s ease,
-        transform 8s linear,
-        filter 1s;
-
-    transform:scale(1.08);
-
-    filter:
-        brightness(.35)
-        blur(2px);
-
     z-index:-2;
 
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    opacity:1;
+
+    transition:
+        opacity .7s ease,
+        transform 3.5s linear,
+        filter .7s ease;
+
+    filter:brightness(.35) blur(2px);
+
+    transform:scale(1.08);
 }
 
-/* qaraltı */
-
 #background::after{
-
     content:"";
-
     position:absolute;
     inset:0;
-
     background:rgba(0,0,0,.45);
-
 }
 
 /* ===========================
@@ -76,42 +67,37 @@ body{
     text-align:center;
 
     padding:20px;
-
 }
 
 #title{
 
-    font-size:78px;
-
-    margin-bottom:45px;
+    font-size:82px;
+    font-weight:900;
 
     text-shadow:
-        0 0 10px rgba(255,255,255,.6),
-        0 0 25px rgba(255,255,255,.3);
+        0 0 18px rgba(255,255,255,.75),
+        0 0 45px rgba(255,255,255,.25);
 
     animation:float 3s ease-in-out infinite;
 
+    margin-bottom:55px;
 }
 
 @keyframes float{
 
-0%,100%{
+    0%,100%{
+        transform:translateY(0);
+    }
 
-transform:translateY(0);
-
-}
-
-50%{
-
-transform:translateY(-8px);
-
-}
+    50%{
+        transform:translateY(-8px);
+    }
 
 }
 
 .question{
 
-    font-size:42px;
+    font-size:48px;
 
     margin-bottom:35px;
 
@@ -125,34 +111,32 @@ transform:translateY(-8px);
 
     display:flex;
 
-    gap:25px;
+    gap:28px;
 
 }
 
 button{
 
-    font-size:24px;
-
     border:none;
-
-    border-radius:15px;
 
     cursor:pointer;
 
-    padding:15px 38px;
+    border-radius:15px;
+
+    padding:16px 38px;
+
+    font-size:24px;
+
+    color:white;
 
     transition:.25s;
-
 }
 
 #yesBtn{
 
     background:#2ecc71;
 
-    color:white;
-
-    box-shadow:
-        0 0 20px rgba(46,204,113,.4);
+    box-shadow:0 0 20px rgba(46,204,113,.45);
 
 }
 
@@ -166,8 +150,6 @@ button{
 
     background:#e74c3c;
 
-    color:white;
-
 }
 
 /* ===========================
@@ -178,31 +160,26 @@ button{
 
     position:fixed;
 
-    right:18px;
+    right:10px;
+    bottom:8px;
 
-    bottom:14px;
+    font-size:8px;
 
-    font-size:10px;
+    color:white;
 
-    color:#ff7eb8;
-
-    opacity:.08;
+    opacity:.03;
 
     user-select:none;
 
     transition:.35s;
 
-    font-style:italic;
+    letter-spacing:.4px;
 
 }
 
 #secret:hover{
 
-    opacity:1;
-
-    font-size:11px;
-
-    text-shadow:0 0 10px hotpink;
+    opacity:.45;
 
 }
 
@@ -210,26 +187,34 @@ button{
    MOBILE
 =========================== */
 
-@media(max-width:700px){
+@media(max-width:768px){
 
-#title{
+    #title{
 
-font-size:46px;
+        font-size:48px;
 
-}
+    }
 
-.question{
+    .question{
 
-font-size:28px;
+        font-size:30px;
 
-}
+    }
 
-button{
+    .buttons{
 
-font-size:18px;
+        flex-direction:column;
 
-padding:13px 28px;
+        gap:16px;
 
-}
+    }
+
+    button{
+
+        font-size:20px;
+
+        width:170px;
+
+    }
 
 }
