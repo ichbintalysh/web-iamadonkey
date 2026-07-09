@@ -3,6 +3,10 @@ const background = document.getElementById("background");
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 
+/* ===========================
+   BACKGROUND IMAGES
+=========================== */
+
 const images = [
     "images/real1.jpg",
     "images/real2.jpg",
@@ -12,36 +16,32 @@ const images = [
     "images/cartoon2.jpeg",
     "images/cartoon3.jpeg",
 
-    "images/shrek1.jpeg",
-    "images/shrek2.jpeg",
-    "images/shrek3.jpeg",
-
     "images/meme1.jpeg",
     "images/meme2.jpeg",
-    "images/meme3.jpeg"
+    "images/meme3.jpeg",
+
+    "images/shrek1.jpeg",
+    "images/shrek2.jpeg",
+    "images/shrek3.jpeg"
 ];
 
-let lastImage = -1;
-
-/* ===========================
-   BACKGROUND
-=========================== */
+let current = -1;
 
 function changeBackground() {
 
-    let index;
+    let next;
 
     do {
-        index = Math.floor(Math.random() * images.length);
-    } while (index === lastImage);
+        next = Math.floor(Math.random() * images.length);
+    } while (next === current);
 
-    lastImage = index;
+    current = next;
 
     background.style.opacity = "0";
 
     setTimeout(() => {
 
-        background.style.backgroundImage = `url("${images[index]}")`;
+        background.style.backgroundImage = `url('${images[next]}')`;
 
         background.style.transform =
             `scale(${1.05 + Math.random() * 0.08})`;
@@ -61,14 +61,12 @@ setInterval(changeBackground, 3500);
    NO BUTTON
 =========================== */
 
-function moveNoButton() {
+function moveButton() {
 
     const rect = noBtn.getBoundingClientRect();
 
-    const padding = 20;
-
-    const maxX = window.innerWidth - rect.width - padding;
-    const maxY = window.innerHeight - rect.height - padding;
+    const maxX = window.innerWidth - rect.width - 20;
+    const maxY = window.innerHeight - rect.height - 20;
 
     const x = Math.random() * maxX;
     const y = Math.random() * maxY;
@@ -79,13 +77,13 @@ function moveNoButton() {
 
 }
 
-noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("mouseenter", moveButton);
 
-noBtn.addEventListener("touchstart", function (e) {
+noBtn.addEventListener("touchstart", function(e){
 
     e.preventDefault();
 
-    moveNoButton();
+    moveButton();
 
 });
 
@@ -97,19 +95,17 @@ noBtn.addEventListener("touchstart", function (e) {
 yesBtn.addEventListener("click", () => {
 
     document.body.innerHTML = `
-
     <div style="
         width:100%;
         height:100vh;
-        background:#000;
         display:flex;
-        flex-direction:column;
         justify-content:center;
         align-items:center;
-        text-align:center;
+        flex-direction:column;
+        background:#000;
         color:white;
         font-family:Arial,Helvetica,sans-serif;
-        overflow:hidden;
+        text-align:center;
     ">
 
         <div style="
@@ -122,20 +118,13 @@ yesBtn.addEventListener("click", () => {
         <h1 style="
             margin-top:20px;
             font-size:72px;
-            color:#ff6db2;
+            color:#ff69b4;
             text-shadow:
-                0 0 15px hotpink,
+                0 0 20px hotpink,
                 0 0 40px hotpink;
         ">
             Biliyordum ❤️
         </h1>
-
-        <p style="
-            margin-top:30px;
-            font-size:34px;
-        ">
-            Seni Çok Ama Çok Ama Çok Seviyorum Ezgi ❤️
-        </p>
 
     </div>
 
@@ -158,7 +147,6 @@ yesBtn.addEventListener("click", () => {
     }
 
     </style>
-
     `;
 
 });
