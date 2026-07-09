@@ -153,35 +153,6 @@ button{
 }
 
 /* =========================
-   EASTER EGG
-========================= */
-
-#secret{
-
-    position:fixed;
-
-    right:8px;
-    bottom:6px;
-
-    font-size:8px;
-
-    color:white;
-
-    opacity:.02;
-
-    user-select:none;
-
-    transition:.25s;
-
-}
-
-#secret:hover{
-
-    opacity:.35;
-
-}
-
-/* =========================
    MOBILE
 ========================= */
 
