@@ -21,71 +21,67 @@ const images = [
     "images/meme3.jpeg"
 ];
 
-let last = -1;
+let lastImage = -1;
 
-function changeBackground(){
+/* ===========================
+   BACKGROUND
+=========================== */
+
+function changeBackground() {
 
     let index;
 
-    do{
-        index = Math.floor(Math.random()*images.length);
-    }while(index === last);
+    do {
+        index = Math.floor(Math.random() * images.length);
+    } while (index === lastImage);
 
-    last = index;
+    lastImage = index;
 
     background.style.opacity = "0";
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
-        background.style.backgroundImage =
-            `url("${images[index]}")`;
+        background.style.backgroundImage = `url("${images[index]}")`;
 
         background.style.transform =
-            `scale(${1.08 + Math.random()*0.08})`;
+            `scale(${1.05 + Math.random() * 0.08})`;
 
         background.style.opacity = "1";
 
-    },400);
+    }, 350);
 
 }
 
 changeBackground();
 
-setInterval(changeBackground,3500);
-
+setInterval(changeBackground, 3500);
 
 
 /* ===========================
    NO BUTTON
 =========================== */
 
-function moveNoButton(){
+function moveNoButton() {
 
     const rect = noBtn.getBoundingClientRect();
 
     const padding = 20;
 
-    const maxX =
-        window.innerWidth-rect.width-padding;
+    const maxX = window.innerWidth - rect.width - padding;
+    const maxY = window.innerHeight - rect.height - padding;
 
-    const maxY =
-        window.innerHeight-rect.height-padding;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
 
-    let x =
-        Math.random()*maxX;
-
-    let y =
-        Math.random()*maxY;
-
-    noBtn.style.position="fixed";
-    noBtn.style.left=x+"px";
-    noBtn.style.top=y+"px";
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 
 }
 
-noBtn.addEventListener("mouseenter",moveNoButton);
+noBtn.addEventListener("mouseenter", moveNoButton);
 
-noBtn.addEventListener("touchstart",(e)=>{
+noBtn.addEventListener("touchstart", function (e) {
 
     e.preventDefault();
 
@@ -94,52 +90,51 @@ noBtn.addEventListener("touchstart",(e)=>{
 });
 
 
-
 /* ===========================
    YES BUTTON
 =========================== */
 
-yesBtn.addEventListener("click",()=>{
+yesBtn.addEventListener("click", () => {
 
-    document.body.innerHTML=`
+    document.body.innerHTML = `
 
     <div style="
+        width:100%;
         height:100vh;
+        background:#000;
         display:flex;
         flex-direction:column;
         justify-content:center;
         align-items:center;
-        background:black;
-        color:white;
-        font-family:Arial;
         text-align:center;
+        color:white;
+        font-family:Arial,Helvetica,sans-serif;
         overflow:hidden;
     ">
 
-        <h1 style="
-            font-size:70px;
-            color:#ff6fae;
-            text-shadow:
-                0 0 20px hotpink,
-                0 0 60px hotpink;
-            animation:pulse 1.8s infinite;
+        <div style="
+            font-size:90px;
+            animation:pulse 1.2s infinite;
         ">
-            ❤️❤️❤️
+            ❤️
+        </div>
+
+        <h1 style="
+            margin-top:20px;
+            font-size:72px;
+            color:#ff6db2;
+            text-shadow:
+                0 0 15px hotpink,
+                0 0 40px hotpink;
+        ">
+            Biliyordum ❤️
         </h1>
 
-        <h2 style="
-            margin-top:25px;
-            font-size:45px;
-        ">
-            Seni Çok Ama Çok Seviyorum Ezgi ❤️
-        </h2>
-
         <p style="
-            margin-top:20px;
-            font-size:22px;
-            color:#ddd;
+            margin-top:30px;
+            font-size:34px;
         ">
-            İyi ki varsın.
+            Seni Çok Ama Çok Ama Çok Seviyorum Ezgi ❤️
         </p>
 
     </div>
@@ -153,7 +148,7 @@ yesBtn.addEventListener("click",()=>{
         }
 
         50%{
-            transform:scale(1.12);
+            transform:scale(1.15);
         }
 
         100%{
